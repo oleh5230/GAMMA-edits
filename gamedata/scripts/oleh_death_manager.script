@@ -1,0 +1,12 @@
+keep_item = death_manager.keep_item
+death_manager.keep_item = function(npc, item) -- The function is called for each item, and decide if this item should stay or get released.
+	if not (item) then
+		return
+	end 
+	kind = ini_sys:r_string_ex(item:section(),"kind")
+	if kind and kind == "i_mutant_cooked" then
+		alife_release(se_item)
+		return
+	end
+	keep_item(npc, item)
+end

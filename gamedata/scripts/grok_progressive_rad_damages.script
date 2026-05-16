@@ -1,0 +1,111 @@
+grok_rads = 0
+
+function actor_on_before_hit(shit)
+	local hit_type_rad = HitTypeID["Radiation"]
+
+	--Check if damage source is radiation
+    local hit_power = shit.power-- * 0.15
+	if shit.type ~= hit_type_rad or hit_power <= 0 then
+		return
+	end
+
+	shit.power = 0
+	local actor = db.actor
+
+	--Calculate new power
+	local hit_additional = 0
+
+	-- Outfit protection
+	local outfit = actor:item_in_slot(7)
+	if outfit then
+		local c_obj = outfit:cast_CustomOutfit()
+		local prot = c_obj and c_obj:GetDefHitTypeProtection(hit_type_rad) or 0
+
+		hit_additional = hit_additional + prot * 100
+	end
+
+	-- Helmet protection
+	local helm = actor:item_in_slot(12)
+	if helm then
+		local c_obj = helm:cast_Helmet()
+		local prot = c_obj and c_obj:GetDefHitTypeProtection(hit_type_rad) or 0
+
+		hit_additional = hit_additional + prot * 100
+	end
+
+	-- Artefacts protection
+	actor:iterate_belt(function(owner, obj)
+		local sec = obj:section()
+		local cond = obj:condition()
+		local immunities_sec = SYS_GetParam(0, sec, "hit_absorbation_sect", sec)
+		local prot = SYS_GetParam(2, immunities_sec, "radiation_immunity", 0) * cond
+
+		hit_additional = hit_additional + prot * 100
+	end)
+
+	-- Booster protection
+	actor:cast_Actor():conditions():BoosterForEach(function(booster_type, booster_time, booster_value)
+		-- printf("%s, %s, %s", booster_type, booster_time, booster_value)
+		if booster_type == BoosterID["RadiationProtection"] then
+			-- printf("booster_value %s", booster_value)
+			hit_additional = hit_additional + booster_value * 100
+		end
+	end)
+
+	-- Final modifier
+	local hit_modifier = hit_additional >= 0 and 1 + hit_additional or 1 / (1 - hit_additional)
+	local actor_hit_power = hit_power / hit_modifier 
+
+	-- printf("rad hit %s", actor_hit_power)
+	actor:change_radiation(actor_hit_power)
+    printf("actor_hit_power %s", actor_hit_power)
+
+end
+
+step = 6000
+coughing_time = 0
+coughing = false
+
+function actor_on_update()
+
+    if not tg then
+        tg = time_global()
+    end
+
+    if tg then
+        if time_global() > tg+step then
+			local actor_rad = db.actor.radiation
+            printf("%s %s", actor_rad, math.random())
+            tg = nil
+            -- if actor_rad > 0 then
+            --     local base_damage_value = 0.0024
+            --     local actor_health = db.actor.health
+            --     local life_remove = actor_health - (base_damage_value * actor_rad * actor_rad * actor_rad * actor_rad)
+            --     db.actor:set_health_ex(life_remove)
+            -- end
+
+            if actor_rad > 0.1 then
+                if math.random() <= actor_rad then
+                    local actor_health = db.actor.health
+                    db.actor:set_health_ex(actor_health - math.random(33,66)/1000)
+					grok_rads = 1
+                    play_voice_over()
+                    level.add_pp_effector("blur2.ppe", math.random(645808, 645820), false)
+				else
+					grok_rads = 0
+                end
+            end
+        end
+    end
+end
+
+function play_voice_over()
+    local sound = sound_object("grok\\cough" .. math.random(1,7))
+    sound:play(db.actor, 0, sound_object.s2d)
+    sound.volume = 1.5
+end
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_before_hit",actor_on_before_hit)
+    RegisterScriptCallback("actor_on_update",actor_on_update)
+end
