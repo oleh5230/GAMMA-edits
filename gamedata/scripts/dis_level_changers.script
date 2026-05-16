@@ -1,0 +1,116 @@
+local stored_restrs = {}
+local xcvb_disable_tp = false
+
+function on_key_press(k)
+	if k ~= DIK_keys.DIK_L then return end
+
+	if not xcvb_disable_tp then
+		disable_restrs()
+	else
+		enable_stored_restrs()
+	end
+
+end
+
+function disable_restrs()
+
+	xcvb_disable_tp = true
+
+	-- get all level changer names
+	local all_lcs = {}
+	for i = 1, 65534 do
+		local se_obj = alife_object(i)
+		if se_obj and se_obj:clsid() == clsid.level_changer_s then
+			all_lcs[se_obj:name()] = se_obj.id
+		end
+	end
+
+
+	printf("~ ========= disable teleports =========")
+	news_manager.send_tip(db.actor, "Disable teleports")
+
+	local tp_ini = ini_file("sr_teleport_sections.ltx")
+
+	tp_ini:section_for_each(function(section)
+		local se_obj = get_story_se_object(section)
+		if se_obj then
+			local dist_to_ac = se_obj.position and se_obj.position:distance_to(db.actor:position())
+			local restr_level = alife():level_name(game_graph():vertex(se_obj.m_game_vertex_id):level_id())
+			local restr_on_our_level = restr_level and restr_level == level.name()		-- sanity check, coz distance can be 40 meters but object is five levels away
+
+			-- get restrictors that are on same level and close to actor
+			if se_obj.online and restr_on_our_level and dist_to_ac and dist_to_ac < 200 then
+
+				-- store restrictor
+				stored_restrs[se_obj.id] = true
+				printf("store restr sec: %s || id: %s", section, se_obj.id)
+
+				-- move restrictor offline
+				printf("--------------------------------")
+				printf("~disabling id: %s || name: %s || on level: %s", se_obj.id, se_obj.name and se_obj:name(), restr_level)
+
+				alife():set_switch_online(se_obj.id, false)
+				alife():set_switch_offline(se_obj.id, true)
+				se_obj:switch_offline()
+				printf("~id: %s is online: %s", se_obj.id, se_obj.online)
+
+
+				-- get and store corresponding level changer
+				local lc_name = section:gsub("space_restrictor", "level_changer")
+				local lc_obj = all_lcs[lc_name] and alife_object(all_lcs[lc_name])
+				if lc_obj then
+					stored_restrs[lc_obj.id] = true
+					printf("store lc name: %s || id: %s", lc_name, lc_obj.id)
+
+					-- move level changer offline
+					printf("--------------------------------")
+					printf("~disabling id: %s || name: %s || on level: %s", lc_obj.id, lc_obj.name and lc_obj:name(), restr_level)
+
+					alife():set_switch_online(lc_obj.id, false)
+					alife():set_switch_offline(lc_obj.id, true)
+					lc_obj:switch_offline()
+					printf("~id: %s is online: %s", lc_obj.id, lc_obj.online)
+
+				end
+
+			end
+
+		end
+	end)
+
+end
+
+function enable_stored_restrs()
+
+	xcvb_disable_tp = false
+
+	printf("~ ========= enable teleports =========")
+	news_manager.send_tip(db.actor, "Enable teleports")
+
+	for id, _ in pairs(stored_restrs) do
+		local se_obj = alife_object(id)
+		if se_obj and (not se_obj.online) then
+			printf("------------------------------")
+			printf("-enabling id: %s || name: %s", se_obj.id, se_obj.name and se_obj:name())
+
+			alife():set_switch_offline(se_obj.id, false)
+			alife():set_switch_online(se_obj.id, true)
+			se_obj:switch_online()
+
+			printf("-id: %s is online: %s", id, se_obj.online)
+			stored_restrs[id] = nil
+		end
+	end
+
+end
+
+function save_state()
+	if xcvb_disable_tp then
+		enable_stored_restrs()
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_key_press", on_key_press)
+	RegisterScriptCallback("save_state", save_state)
+end
