@@ -1,0 +1,7 @@
+dialogs_mlr.give_pri_special_trader_mlr_2 = function(first_speaker, second_speaker) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 30000)
+end
+
+dialogs_mlr.have_pri_special_trader_mlr_2 = function()
+	return mlr_utils.have_money(30000)
+end

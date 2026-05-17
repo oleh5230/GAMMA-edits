@@ -1,0 +1,57 @@
+local previous_task
+local ins_npc
+local str
+local args
+
+news_manager_send_tip = news_manager.send_tip
+function news_manager.send_tip(...)
+	args = {...}
+    str = args[2]  
+	news_manager_send_tip(...)
+	args = nil
+end
+
+tasks_guide_ins_mass_onl = tasks_guide.ins_mass_onl
+function tasks_guide.ins_mass_onl()
+	ins_npc = tasks_guide_ins_mass_onl()
+	return ins_npc
+end
+
+tasks_guide_prepare_follower = tasks_guide.prepare_follower
+function tasks_guide.prepare_follower()
+	if (previous_task) then
+		level.map_remove_object_spot(previous_task, 'secondary_task_location')
+		previous_task = nil
+	end 
+	
+	tasks_guide_prepare_follower()
+	
+	if ins_npc == nil then
+		log("npc for the latest prepare_follower not found")
+		return
+	end
+	
+	if str == nil then
+		log("str not found")
+		return
+	end
+	
+	if tasks_guide.guid and tasks_guide.guid.neustoika and tasks_guide.guid.zarplata then 
+		tasks_guide.guid.neustoika = 1.5*(tasks_guide.guid.zarplata)
+	end
+	
+	previous_task = ins_npc:id()
+	level.map_add_object_spot(previous_task, 'secondary_task_location', str)
+	ins_npc = nil
+	str = nil
+end
+
+function actor_on_leave_dialog(npc_id)
+	if previous_task == npc_id then
+		level.map_remove_object_spot(previous_task, 'secondary_task_location')
+	end
+end
+
+function on_game_start()
+	--RegisterScriptCallback("actor_on_leave_dialog", actor_on_leave_dialog)
+end

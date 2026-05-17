@@ -1,0 +1,25 @@
+
+local patched = false
+
+function on_game_start()
+    patch()
+end
+
+function on_mcm_load()
+    patch()
+end
+
+
+function patch()
+if patched then return end--do nothing if we already did it.
+
+
+if  0 == #ui_options.options then
+  ui_options.init_opt_base()
+end
+
+ui_options.options[4].gr[3].gr[12].min = 0
+ui_options.init_opt_coder()
+
+patched = true
+end
