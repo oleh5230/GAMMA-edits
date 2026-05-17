@@ -1,11 +1,7 @@
 function on_get_item_cost(kind, obj, profile, vanilla_cost, ret)
-	printf("!oleh %s %s %s", kind, vanilla_cost, profile)
-	for k,v in pairs(profile) do
-		printf("%s %s", k, v)
-	end
 	if not obj and vanilla_cost then return end
 	local itm_kind = SYS_GetParam(0, obj:section(), "kind")
-	if itm_kind and (itm_kind == "i_food" or itm_kind == "i_drink") then ret.new_cost = vanilla_cost * 5 end
+	if itm_kind and (itm_kind == "i_food" or itm_kind == "i_drink") then ret.new_cost = vanilla_cost * 3 end
 end
 
 function on_game_start()

@@ -84,7 +84,7 @@ function actor_on_update()
             --     db.actor:set_health_ex(life_remove)
             -- end
 
-            if actor_rad > 0.1 then
+            if actor_rad > 0.3 then
                 if math.random() <= actor_rad then
                     local actor_health = db.actor.health
                     db.actor:set_health_ex(actor_health - math.random(33,66)/1000)
