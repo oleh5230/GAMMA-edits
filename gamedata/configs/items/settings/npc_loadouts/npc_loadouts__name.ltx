@@ -1,0 +1,201 @@
+;-- Define loadout per npc's section name here
+;-- You can also reuse loadouts and slots of existing files
+;-- Modified to remove or replace debug-only GAMMA guns.
+
+;------------------------------------------------------------------------------------------------------------
+;-- NPC section name = some_loadout
+[loadouts_per_name]
+sim_default_military_3_sniper   = loadout_army_sniper
+sim_monolith_sniper   			= loadout_monolith_sniper
+sim_monolith_specnaz_rg6        = loadout_monolith_rg6
+sim_monolith_sniper_gauss       = loadout_monolith_gauss
+sim_default_military_5			= loadout_army_ssu
+sim_default_isg_5				= loadout_isg_blackops
+
+;------------------------------------------------------------------------------------------------------------
+;-- Loadouts
+[loadout_army_sniper]
+primary = army_sniper_primary
+secondary = army_experienced_secondary
+
+[loadout_monolith_sniper]
+primary = monolith_sniper_primary
+secondary = monolith_veteran_secondary
+
+[loadout_monolith_rg6]
+primary = monolith_sniper_primary	;monolith_rg6_primary
+secondary = monolith_veteran_secondary
+
+[loadout_monolith_gauss]
+primary = monolith_sniper_primary ;monolith_gauss_primary
+secondary = monolith_veteran_secondary
+
+[loadout_army_ssu]
+primary = ssu_primary
+secondary = ssu_secondary
+extra = specops_extra
+
+[loadout_isg_blackops]
+primary = blackops_primary
+secondary = blackops_secondary
+extra = specops_extra
+
+
+;------------------------------------------------------------------------------------------------------------
+;-- Slots
+
+[specops_extra]
+grenade_f1:0:1:9
+grenade_rgd5:0:1:5
+grenade_gd-05:0:1:1
+bolt:0:0:100
+
+[blackops_primary]
+; wpn_mp7:4:1
+; wpn_ump45_custom:4:r     ;wpn_ump45
+; wpn_p90:4:r
+; ;wpn_hk417:4:r
+; wpm_xm4:4:r           ;wpn_m4
+; wpn_spas12_custom:r:r
+
+wpn_rpk74_16_drum:r:6:25:100
+wpn_m4_ru556:r:6:10
+wpn_fn2000_nimble:r:6:5
+wpn_m249:0:6:50
+wpn_fal_sa58_osw:r:3:50
+wpn_ace52:r:3:50
+wpn_l96a1m:r:0:20
+wpn_ak5c_bas:r:6:10
+wpm_xm4:r:6:10
+wpm_xm4:0:6:10
+wpn_akm_alfa:r:3:20
+wpn_ak104_alfa:r:3:20
+wpn_scar_siber:r:3:40
+wpn_grot_tan:r:6:5
+
+wpn_sig550_custom:r:6:15
+wpn_g36ka4_rwap:r:6:15
+wpn_g36v_rwap:r:6:15
+
+wpn_dtmdr_black:r:3:10
+
+[blackops_secondary]
+; wpn_sig220_n:4:1         ;wpn_sig220
+; wpn_sig220_n_upg220:4:r  ;wpn_sig220_custom
+; wpn_usp_match:4:r        ;wpn_usp
+; wpn_fn57:4:r
+
+wpn_colt1911_n:r:0:10
+wpn_sig220_n:r:0:10
+wpn_beretta_camo:r:0:15
+wpn_sig226:r:0:15
+wpn_walther_p99:r:0:50
+wpn_glock:r:0:20
+wpn_fnp45:r:0:50
+wpn_fnx45_custom:r:0:5
+wpn_usp_tac_45:r:0:1
+wpn_glock_modern:r:0:5
+wpn_colt1911_custom:r:0:5
+wpn_korth_custom:r:0:5
+wpn_desert_eagle:r:0:30
+wpn_colt1911_camo:r:0:30
+wpn_fn57:r:0:50
+
+[ssu_primary]
+; wpn_val:r:r              ;wpn_val_modern
+; wpn_groza:r:r
+; wpn_ak74u:0:r        ;wpn_ak74u_snag
+; wpn_saiga12s_m1:4:r      ;wpn_saiga12s
+; wpn_groza_nimble:0:r
+
+;- RIFLE
+wpn_akms_alt:r:3:20
+wpn_rpk:r:3:35
+wpn_ak103:r:3:25
+wpn_rpd:r:3:5
+wpn_ak104_alfa:r:3:18:100
+wpn_akm_alfa:r:3:8:100
+wpn_mk47:r:3:5:100
+
+wpn_groza:r:3:5
+wpn_val:r:3:35
+wpn_amb17:1:3:5:100
+
+wpn_ak74:r:6:20
+wpn_abakan_n:r:6:10
+wpn_ak74:r:6:20
+wpn_ak74u:1:6:20:100
+wpn_ak74m:1:6:20:100
+wpn_ak74m_beard:1:6:20:100
+wpn_ak74m:1:6:35:100
+wpn_groza_nimble:1:6:5:100
+wpn_rpk74_16_drum:1:6:10:100
+wpn_ak105:r:6:15
+
+wpn_pkp_siber:0:0:30
+
+[ssu_secondary]
+; wpn_oc33:4:r
+; wpn_vityaz:4:r
+
+wpn_tt33_modern:0:0:20
+wpn_mp443:0:0:30
+wpn_aps:0:0:35
+wpn_oc33:r:0:35
+wpn_sr1m:r:0:60
+wpn_pl15_tan:r:0:40
+wpn_eft_rsh12:r:0:5
+
+[army_sniper_primary]
+; ; wpn_vssk
+; ; wpn_vssk:0:r
+; wpn_svd_m1:1             ;wpn_svd
+; wpn_svd_m1:1:r
+; ;wpn_svd_custom:1
+; ;wpn_svd_custom:1:r
+; wpn_svt40:1
+; wpn_svt40:1:r
+; ;wpn_svt40_alt:1
+; ;wpn_svt40_alt:1:r
+; wpn_sv98
+; wpn_sv98:0:r
+; ;wpn_sv98_custom
+; ;wpn_sv98_custom:0:r
+
+wpn_svd_m1:0:6:35
+wpn_vssk:r:3:15
+wpn_svds:r:3:5
+
+[monolith_sniper_primary]
+; wpn_vssk
+; wpn_vssk:0:1
+; wpn_svd_m1:1             ;wpn_svd
+; wpn_svd_m1:1:r
+;wpn_svd_custom:1
+;wpn_svd_custom:1:r
+; wpn_svt40:1
+; wpn_svt40:1:r
+;wpn_svt40_alt:1
+;wpn_svt40_alt:1:r
+; wpn_sv98
+; wpn_sv98:0:r
+;wpn_sv98_custom
+;wpn_sv98_custom:0:r
+;wpn_sig550_sniper
+; wpn_remington700            ;wpn_l96a1
+; wpn_remington700_magpul_pro ;wpn_l96a1m
+; wpn_remington700_lapua700   ;wpn_trg
+
+wpn_svd_m1:0:6:35
+wpn_vssk:r:3:15
+wpn_svds:r:3:5
+wpn_remington700:0:3:5
+wpn_remington700_magpul_pro:0:3:15
+
+
+[monolith_rg6_primary] ;Unused
+wpn_rg-6
+wpn_m79
+
+[monolith_gauss_primary] ;Unused
+wpn_gauss

@@ -9,5 +9,5 @@ function on_get_item_cost(kind, obj, profile, vanilla_cost, ret)
 end
 
 function on_game_start()
-	--RegisterScriptCallback("on_get_item_cost", on_get_item_cost)
+	RegisterScriptCallback("on_get_item_cost", on_get_item_cost)
 end
