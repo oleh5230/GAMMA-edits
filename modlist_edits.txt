@@ -1,0 +1,18 @@
+Disable:
+- Skill System
+- Coffee
+- Tutorial
+- Ammo Maker
+- Inspect
+- Stash weight
+- Seamless transition
+- Streamlined upgrades?
+
+Enable:
+- Soundscape
+- Grass
+- Ground textures
+- Ammo drop
+- Fluid draw
+- Glowstick shadowcast
+- Ammo check?
