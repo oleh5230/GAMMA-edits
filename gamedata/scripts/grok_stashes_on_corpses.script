@@ -9,7 +9,7 @@ Source: https://www.moddb.com/mods/stalker-anomaly/addons/stash-on-corpse-lootin
 ==============================================
 --]]
 local SETTINGS = {
-    chance = 0.08,
+    chance = 0.12,
 }
 
 local _used_corpses = {}

@@ -62,7 +62,7 @@ function actor_on_before_hit(shit)
 
 end
 
-step = 6000
+step = 9000
 coughing_time = 0
 coughing = false
 
@@ -87,7 +87,7 @@ function actor_on_update()
             if actor_rad > 0.3 then
                 if math.random() <= actor_rad then
                     local actor_health = db.actor.health
-                    db.actor:set_health_ex(actor_health - math.random(33,66)/1000)
+                    db.actor:set_health_ex(actor_health - math.random(30,50)/1000)
 					grok_rads = 1
                     play_voice_over()
                     level.add_pp_effector("blur2.ppe", math.random(645808, 645820), false)

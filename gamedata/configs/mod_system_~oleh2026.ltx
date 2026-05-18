@@ -2,11 +2,88 @@
 radiation_v             = 0.00001 ; 0.00001
 radiation_health_v		= 0.00000 ; 0.0018
 
-![yadylin]
+![akvatab]
+boost_time                                         = 271
+
+![drug_psy_blockade]
 eat_alcohol					                       = 0
+boost_time                                         = 324
+
+![drug_radioprotector]
+eat_alcohol					                       = 0
+boost_time                                         = 324
+
+![drug_sleepingpills]
+cost						                       = 3754
+eat_sleepiness				                       = 0.679
+eat_alcohol					                       = 0
+boost_time                                         = 421
+
+![yadylin]:!booster,booster_multi
+cost                                               = 2672
+max_uses                                           = 3
+eat_alcohol					                       = 0
+boost_time                                         = 67
+
+![drug_booster]
+cost						                       = 2382
+
+![adrenalin]
+cost						                       = 12240
+
+![medkit]
+boost_radiation_restore		                       = 0
+eat_satiety 				                       = -0.032
+
+![medkit_army]
+eat_satiety 				                       = -0.039
+
+![medkitscientic]
+eat_satiety 				                       = -0.017
+
+![stimpack]
+eat_satiety 				                       = -0.58
+
+![stimpack_army]
+eat_satiety 				                       = -0.71
+
+![stimpack_scientic]
+eat_satiety 				                       = -0.032
+
+; ![medkit]
+; boost_radiation_restore		                       = 0
+; eat_satiety 				                       = -0.084
+
+; ![medkit_army]
+; eat_satiety 				                       = -0.117
+
+; ![medkitscientic]
+; eat_satiety 				                       = -0.043
+
+; ![stimpack]
+; eat_satiety 				                       = -0.164
+
+; ![stimpack_army]
+; eat_satiety 				                       = -0.204
+
+; ![stimpack_scientic]
+; eat_satiety 				                       = -0.096
+
+![antibio_sulfad]
+boost_time					                       = 367
+
+![antiemetic]
+boost_time					                       = 342
+
+![antibio_chlor]
+boost_time					                       = 381
+
+![analgetic]
+boost_time					                       = 323
 
 ![akvatab]
 eat_alcohol					                       = 0
+boost_time                                         = 54
 
 ![tetanus]
 eat_alcohol					                       = 0
@@ -14,17 +91,21 @@ eat_alcohol					                       = 0
 ![flask]
 boost_radiation_restore		                       = 0
 eat_satiety					                       = 0
+eat_thirstiness				                       = -2.7
 !boost_time
 
 ![mineral_water]
-boost_radiation_restore		                       = 0
 eat_satiety					                       = 0
+eat_thirstiness				                       = -2.97
 !boost_time
 
 ![water_drink]
-boost_radiation_restore		                       = 0
 eat_satiety					                       = 0
+eat_thirstiness				                       = -2.97
 !boost_time
+
+![beer]
+eat_thirstiness				                       = -2.43
 
 ![energy_drink]
 boost_radiation_restore		                       = 0

@@ -1,0 +1,24 @@
+function brainlab_travel_check(trip)
+    if not IsStoryMode() then return end
+
+    if level.name() == "l08u_brainlab" and not has_alife_info("yan_labx16_switcher_primary_off") and not game_statistics.has_actor_achievement("duga_free") then
+        trip.ret_value = false
+        hide_hud_pda()
+        actor_menu.set_msg(1, game.translate_string("st_fftd_gamma_underground"), 4)
+
+    elseif level.name() == "l08_yantar" and has_alife_info("yantar_tunnel_start") and not has_alife_info("yantar_tunnel_finish") then
+        trip.ret_value = false
+        hide_hud_pda()
+        actor_menu.set_msg(1, game.translate_string("st_fftd_gamma_underground"), 4)
+    end
+end
+
+yan_saharov_message = xr_effects.yan_saharov_message
+xr_effects.yan_saharov_message = function(actor, npc, p)
+	db.actor:give_info_portion("yantar_tunnel_finish")
+	yan_saharov_message(actor, npc, p)
+end
+
+function on_game_start()
+    RegisterScriptCallback("on_before_fast_travel", brainlab_travel_check)
+end

@@ -1,0 +1,26 @@
+zzz_player_injuries.healhelp = {}
+zzz_player_injuries.healhelp.drug_anabiotic		= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5}
+zzz_player_injuries.healhelp.rebirth			= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5}
+zzz_player_injuries.healhelp.survival_kit		= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5}
+zzz_player_injuries.healhelp.akvatab			= {head=6,torso=6,rightleg=3,leftleg=3,rightarm=3,leftarm=3}
+zzz_player_injuries.healhelp.yadylin			= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2}
+zzz_player_injuries.healhelp.stimpack_army		= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2}
+zzz_player_injuries.healhelp.stimpack_scientic	= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2}
+
+zzz_player_injuries.medkits = {}
+zzz_player_injuries.medkits.lastregen=time_global()
+zzz_player_injuries.medkits.timedhealth=60000
+zzz_player_injuries.medkits.drug_anabiotic		= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=60000}
+zzz_player_injuries.medkits.rebirth				= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=60000}
+zzz_player_injuries.medkits.survival_kit		= {head=10,torso=10,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=60000}
+zzz_player_injuries.medkits.akvatab				= {head=6,torso=6,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=60000}
+zzz_player_injuries.medkits.yadylin				= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2,timeregen=60000}
+zzz_player_injuries.medkits.stimpack_army		= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2,timeregen=60000}
+zzz_player_injuries.medkits.stimpack_scientic	= {head=4,torso=4,rightleg=2,leftleg=2,rightarm=2,leftarm=2,timeregen=60000}
+
+zzz_player_injuries.RegisterScriptCallback = function(name,func_or_userdata)
+	if name == "actor_on_sleep" then
+	else
+		RegisterScriptCallback(name,func_or_userdata)
+	end
+end
