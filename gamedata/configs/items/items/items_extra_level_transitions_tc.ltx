@@ -1,0 +1,22 @@
+; Truck (East Higway past Bandit) <-> Outskirts South East Of Bookstore
+[lc_tc_east_outskirts_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_tc_east_outskirts_south
+pos = 300, 8.90, 419
+gvid = 5272
+spot = level_changer_up_right
+hint = st_tc_space_restrictor_to_outskirts_descr
+to_pos = -66.5, -0.50, -386 
+to_gvid = 4993
+trigger_radius = 3.5
+
+[lc_outskirts_south_tc_east]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_outskirts_south_tc_east
+pos = -66.5, -0.50, -386 
+gvid = 4993
+spot = level_changer_down
+hint = st_outskirts_space_restrictor_to_tc_descr
+to_pos = 300, 8.90, 419
+to_gvid = 5272
+trigger_radius = 3.0

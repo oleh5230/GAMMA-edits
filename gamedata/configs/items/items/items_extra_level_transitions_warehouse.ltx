@@ -1,0 +1,22 @@
+; Army Warehouse 2 Forest <-> Red Forest South (Near camp)
+[lc_warehouse_north_red_forest_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_warehouse_north_red_forest_south
+pos = -243 , -0.244 , 434
+gvid = 2158
+spot = level_changer_up
+hint = st_warehouse_space_restrictor_to_red_forest_descr
+to_pos = 136, -0.763 , -314
+to_gvid = 2827
+trigger_radius = 2.0
+
+[lc_red_forest_south_warehouse_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_red_forest_south_warehouse_north
+pos = 136, -0.763 , -314
+gvid = 2827
+spot = level_changer_down
+hint = st_red_forest_space_restrictor_to_warehouse_descr
+to_pos = -243 , -0.244 , 434
+to_gvid = 2158
+trigger_radius = 1.0

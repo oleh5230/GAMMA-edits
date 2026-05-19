@@ -1,5 +1,7 @@
 function main()
-	for i=1,200 do treasure_manager.create_random_stash() end
+	for i=1,100 do
+		treasure_manager.create_random_stash(nil,nil,nil,nil)
+	end
 end
 
 --[[
@@ -91,42 +93,6 @@ local map_tiers = {
     ["l13u_warlab"] = {4, 5, 5, 5, 5},
     ["pripyat"] = {1, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5},
     ["y04_pole"] = {1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3},
-}
-
-local map_tiers_mods = {
-    ["k00_marsh"] = 1,
-    ["l01_escape"] = 1,
-    ["l05_bar"] = 1.4,
-    ["l02_garbage"] = 1.2,
-    ["k01_darkscape"] = 1.6,
-    ["l04_darkvalley"] = 1.2,
-    ["k02_trucks_cemetery"] = 1.4,
-    ["l09_deadcity"] = 1.4,
-    ["l03_agroprom"] = 1.4,
-    ["l06_rostok"] = 1.4,
-    ["l07_military"] = 1.4,
-    ["l08_yantar"] = 1.4,
-    ["jupiter"] = 1.8,
-    ["l03u_agr_underground"] = 2,
-    ["l10_limansk"] = 2,
-    ["l08u_brainlab"] = 2,
-    ["l10_red_forest"] = 1.6,
-    ["labx8"] = 2,
-    ["l12_stancia"] = 2,
-    ["zaton"] = 1.8,
-    ["l12_stancia_2"] = 2,
-    ["l11_hospital"] = 2,
-    ["jupiter_underground"] = 2,
-    ["l10u_bunker"] = 2,
-    ["l10_radar"] = 2.2,
-    ["l04u_labx18"] = 2,
-    ["l11_pripyat"] = 2.4,
-    ["l12u_sarcofag"] = 2,
-    ["l12u_control_monolith"] = 2,
-    ["l13_generators"] = 2,
-    ["l13u_warlab"] = 2,
-    ["pripyat"] = 2,
-    ["y04_pole"] = 1,
 }
 
 local tools_map_tiers = {
@@ -328,7 +294,7 @@ function init_settings()
 		if allowed then
 			-- Check if its multi use
 			local sec, uses = utils_item.get_defined_uses(section)
-			local max_uses = 1
+			local max_uses,cost = 1,0
 			local sec_p = section
 			if sec and uses and ini_sys:section_exist(sec) then
 				max_uses = ini_sys:r_float_ex(sec,"max_uses") or uses
@@ -336,46 +302,45 @@ function init_settings()
 			end
 			
 			-- Get price, kind, tier
-			if max_uses > 1 then
+			if (max_uses > 1) or ini_sys:section_exist(section) then
 				uses = uses or 1
 				local cost = (ini_sys:r_float_ex(sec_p,"cost")) or 1000
 				local usage = (uses/max_uses) or 0
 				if cost and usage then
-					cost = cost * usage
+					cost = (cost * usage) or 0
 				else
 					cost = 0
 				end
-			end
+				local kind = ini_sys:r_string_ex(sec_p,"kind")
+                --local tier = ini_sys:r_float_ex(sec_p,"tier")
+                local alternative_tiers = ini_tiers -- Grok's Stash Craft Repair Overhaul Defines path and file used for tier reference and assignment
+                local tier = alternative_tiers:r_float_ex(sec_p, "tier") -- Grok's Stash Craft Repair Overhaul Tells the treasure manager to look for the tier code in the above config
 
-			local kind = ini_sys:r_string_ex(sec_p,"kind")
-			--local tier = ini_sys:r_float_ex(sec_p,"tier")
-			local alternative_tiers = ini_tiers -- Grok's Stash Craft Repair Overhaul Defines path and file used for tier reference and assignment
-			local tier = alternative_tiers:r_float_ex(section, "tier") -- Grok's Stash Craft Repair Overhaul Tells the treasure manager to look for the tier code in the above config
---               -- Groks Stash Overhaul, handles item which tier fails to be determined
---               if not tier then
---                   tier = math.random(3, 5)
---               end
+ --               -- Groks Stash Overhaul, handles item which tier fails to be determined
+ --               if not tier then
+ --                   tier = math.random(3, 5)
+ --               end
 
-			printf("[treasure_manager] %s %s cost %s kind %s tier %s", section, sec_p, cost, kind, tier)
-			if kind and tier then
-				
-				-- Reduce tier of used items
-				-- local lost_uses = max_uses - uses
-				-- tier = math.ceil(tier - (lost_uses/2))
-				-- tier = clamp(tier,1,5)
-				
-				if (not item_list[kind]) then
-					item_list[kind] = {}
+				if (cost > 1) and kind and tier then
+					
+					-- Reduce tier of used items
+					local lost_uses = max_uses - uses
+					tier = math.ceil(tier - (lost_uses/2))
+					tier = clamp(tier,1,5)
+					
+					if (not item_list[kind]) then
+						item_list[kind] = {}
+					end
+					
+					if (not item_list[kind][tier]) then
+						item_list[kind][tier] = {}
+					end	
+					
+					local t = item_list[kind][tier]
+					t[#t+1] = section
+				else
+					printf("!WARNING treasure_manager.init_settings | item [%s] is missing info | kind: %s - tier: %s", section, kind, tier)
 				end
-				
-				if (not item_list[kind][tier]) then
-					item_list[kind][tier] = {}
-				end	
-				
-				local t = item_list[kind][tier]
-				t[#t+1] = section
-			else
-				printf("!WARNING treasure_manager.init_settings | item [%s] is missing info | kind: %s - tier: %s", section, kind, tier)
 			end
 		end
 	end
@@ -575,9 +540,8 @@ function set_random_stash(no_spot, hint, bonus_items, id, dbg)
     local se_obj = alife_object(id) -- Grok's Stash Overhaul
     local lvl = alife():level_name(game_graph():vertex(se_obj.m_game_vertex_id):level_id()) -- Grok's Stash Overhaul
 	local map_tier_vector = map_tiers[lvl] -- Grok's Stash Overhaul
-	local map_tier_mod = map_tiers_mods[lvl] or 1 --oleh5230
 	
-	local stash_weight = math.random(min_weight * map_tier_mod, max_weight * map_tier_mod)
+	local stash_weight = math.random(min_weight,max_weight)
 	if (game_achievements.has_achievement("rag_and_bone")) then
 		stash_weight = stash_weight + 200
 	end
@@ -592,41 +556,42 @@ function set_random_stash(no_spot, hint, bonus_items, id, dbg)
 		
 		-- Rotate through shuffled kinds
 		shuffle_table(kind_list)
+		
 		for i=1,#kind_list do
 			local kind = kind_list[i]
 			
 			-- No multi toolkits if its a rare stash
-			-- if (kind == "i_kit") and is_rare then
-			-- 	kind = "na"
-			-- end
+--			if (kind == "i_kit") and is_rare then
+--				kind = "na"
+--			end
 			
-			-- Rotate through shuffled tiers
-			shuffle_table(tier_list)
-			for j=1,#tier_list do
-				local tier = tier_list[j]
+            -- Rotate through shuffled tiers
+			 shuffle_table(map_tier_vector)
+            --shuffle_table(tier_list)
+
+            random_tier_from_vector = random_key_table(map_tier_vector) -- Grok's Stash Overhaul
+            lvl_tier = map_tier_vector[random_tier_from_vector] -- Grok's Stash Overhaul
+            --local tier = tier_list[j]
+            local tier = tier_list[lvl_tier] -- Grok's Stash Overhaul
 				
-				-- Get possible item by current kind and tier
-				--printf("rotation: kind = %s - tier = %s", kind, tier)
-				if item_list[kind] and item_list[kind][tier] and tier_val[kind] and tier_val[kind][tier] then
-					local chance = kind_val[kind].chance
-					local chance_multi = tier_val[kind][tier].chance_multi or 1
-					if (math.random(1,100) < (chance * chance_multi) + inc) then
-						local weight = kind_val[kind].weight
-						local weight_multi = tier_val[kind][tier].weight_multi or 1
+			-- Get possible item by current kind and tier
+			--printf("rotation: kind = %s - tier = %s", kind, tier)
+			if item_list[kind] and item_list[kind][tier] and tier_val[kind] and tier_val[kind][tier] then
+				local chance = kind_val[kind].chance
+				local chance_multi = tier_val[kind][tier].chance_multi or 1
+				if (math.random(1,100) < (chance * chance_multi)) then
+					local weight = kind_val[kind].weight
+					local weight_multi = tier_val[kind][tier].weight_multi or 1
 						
-						local t = item_list[kind][tier]
-						content[#content + 1] = t[math.random(#t)]
+					local t = item_list[kind][tier]
+					content[#content + 1] = t[math.random(#t)]
 						
-						stash_weight = stash_weight - ((weight * weight_multi) + (inc * 5))
-						skip = true
+					stash_weight = stash_weight - ((weight * weight_multi))
+					skip = false
 						
-						--printf("calculations: chance = %s - impact = %s", ((chance * chance_multi) + inc), ((weight * weight_multi) + (inc * 5)) )
-					end
+					--printf("calculations: chance = %s - impact = %s", (chance * chance_multi), (weight * weight_multi) )
 				end
-				
-				if skip then break end
-			end	
-			
+			end
 			if skip then break end
 		end
 		
@@ -637,6 +602,62 @@ function set_random_stash(no_spot, hint, bonus_items, id, dbg)
 		end
 		
 		skip = false
+	end
+	
+	if #content > 0 and not is_rare then
+			if math.random(100) < 46 then
+				powder_type_chance = math.random(100)
+				powder_type = "powder_1"
+				if powder_type_chance >= 0 and powder_type_chance <= 35 then
+					powder_type = "powder_1"
+				elseif powder_type_chance >= 36 and powder_type_chance <= 70 then
+					powder_type = "powder_2"
+				elseif powder_type_chance >= 71 then
+					powder_type = "powder_3"
+				end
+				
+				content[#content + 1] = powder_type
+			end
+			
+			if math.random(100) < 46 then
+				bullet_type_tbl = {
+				[1] = "bullet_pistol",
+				[2] = "bullet_pistol",
+				[3] = "bullet_pistol_ap",
+				[4] = "bullet_pistol_ap",
+				[5] = "bullet_pistol_ap",
+				[6] = "bullet_pistol_ap",
+				[7] = "bullet_shotgun",
+				[8] = "bullet_shotgun",
+				[9] = "bullet_shotgun_ap",
+				[10] = "bullet_shotgun_ap",
+				[11] = "bullet_r5",
+				[12] = "bullet_r5",
+				[13] = "bullet_r5_ap",
+				[14] = "bullet_r5_ap",
+				[15] = "bullet_r7",
+				[16] = "bullet_r7_ap",
+				}
+				
+				bullet_type = bullet_type_tbl[math.random(#bullet_type_tbl)]
+				content[#content + 1] = bullet_type
+			end
+			
+			if math.random(100) < 46 then
+				casing_type_tbl = {
+				[1] = "casing_r5",
+				[2] = "casing_r7",
+				[3] = "casing_s",
+				[4] = "casing_p",
+				}
+				
+				casing_type = casing_type_tbl[math.random(#casing_type_tbl)]
+				content[#content + 1] = casing_type
+			end
+			
+			if math.random(100) > 98 and grok_artefacts_melter then
+				content[#content + 1] = "itm_artefactskit"
+			end
 	end
 	
 	if #content > 0 and is_rare then

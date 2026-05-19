@@ -19,6 +19,7 @@ if  0 == #ui_options.options then
 end
 
 ui_options.options[4].gr[3].gr[12].min = 0
+ui_options.options[4].gr[3].gr[15].min = 0
 ui_options.init_opt_coder()
 
 patched = true

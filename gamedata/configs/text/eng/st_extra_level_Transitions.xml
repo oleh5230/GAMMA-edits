@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+<string id="st_agroprom_space_restrictor_to_yantar_descr">
+    <text>To Yantar (South West Hill)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_agroprom_descr">
+    <text>To Agroprom (North West Swamp Hill)</text>
+  </string>
+
+  <string id="st_esc_space_restrictor_to_darkscape_descr">
+    <text>To The Darkscape (South Tunnel)</text>
+  </string>
+
+  <string id="st_darkscape_space_restrictor_to_esc_descr">
+    <text>To The Cordon (South West)</text>
+  </string>
+
+  <string id="st_esc_space_restrictor_to_marsh_descr">
+    <text> To The Great Swamps (East)</text>
+  </string>
+
+  <string id="st_marsh_space_restrictor_to_esc_descr">
+    <text> To The Cordon (South West)</text>
+  </string>
+
+   <string id="st_deadcity_space_restrictor_to_rostok_descr">
+    <text> To The Wild Territory (North West)</text>
+  </string>
+
+   <string id="st_rostok_space_restrictor_to_deadcity_descr">
+    <text> To The Dead City (Tunnel Pipe Exit)</text>
+  </string>
+
+  <string id="st_limansk_space_restrictor_to_jupiter_descr">
+    <text> To Jupiter (Bandit Camp)</text>
+  </string>
+
+  <string id="st_jupiter_space_restrictor_to_limansk_descr">
+    <text> To Limansk (East River)</text>
+  </string>
+
+  <string id="st_limansk_south_east_space_restrictor_to_jupiter_south_west_descr">
+    <text> To Jupiter (South West) </text>
+  </string>
+
+<string id="st_jupiter_south_west_space_restrictor_to_limansk_south_east_descr">
+    <text> To Limansk (South East City)</text>
+  </string>
+
+    <string id="st_marsh_space_restrictor_to_agroprom_descr">
+    <text> To Agroprom (South West of The RI)</text>
+  </string>
+
+  <string id="st_agroprom_space_restrictor_to_marsh_descr">
+    <text> To The Great Swamps (Above Doc)</text>
+  </string>
+
+<string id="st_outskirts_space_restrictor_to_zaton_descr">
+    <text> To Zaton (Ranger Station)</text>
+  </string>
+
+<string id="st_zaton_space_restrictor_to_outskirts_descr">
+    <text> To Outskirts (North)</text>
+  </string>
+
+<string id="st_red_forest_space_restrictor_to_deadcity_descr">
+    <text> To The Dead City (North East)</text>
+  </string>
+
+<string id="st_deadcity_space_restrictor_to_red_forest_descr">
+    <text> To The Red Forest Bridge? (Side Acess gate)</text>
+  </string>
+
+<string id="st_warehouse_space_restrictor_to_red_forest_descr">
+    <text> To The Red Forest (South)</text>
+  </string>
+
+<string id="st_red_forest_space_restrictor_to_warehouse_descr">
+    <text> To Army Warehouses (North)</text>
+  </string>
+
+<string id="st_rostok_space_restrictor_to_warehouse_descr">
+    <text>To Army Warehouses (West BS Village)</text>
+  </string>
+
+  <string id="st_warehouse_space_restrictor_to_rostok_descr">
+    <text> To The Wild Territory (North East)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_deadcity_descr">
+    <text> To The Dead City (West)</text>
+  </string>
+
+  <string id="st_deadcity_space_restrictor_to_yantar_descr">
+    <text> To Yantar (West)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_rostok_descr">
+    <text> To Wild Territory (West)</text>
+  </string>
+
+  <string id="st_rostok_space_restrictor_to_yantar_descr">
+    <text> To Yantar (North-East Tunnel)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_garbage_descr">
+    <text> To The Garbage (West)</text>
+  </string>
+
+  <string id="st_garbage_space_restrictor_to_yantar_descr">
+    <text> To Yantar (South)</text>
+  </string>
+
+  <string id="st_deadcity_space_restrictor_to_warehouse_descr">
+    <text> To Army Warehouses (East Entrance Furthur back)</text>
+  </string>
+
+  <string id="st_warehouse_space_restrictor_to_deadcity_descr">
+    <text> To The Dead City (East Gate)</text>
+  </string>
+
+  <string id="st_jupiter_underground_space_restrictor_to_jupiter_descr">
+    <text> To The Second Jupiter Exit</text>
+  </string>
+
+ <string id="st_jupiter_space_restrictor_to_jupiter_underground_descr">
+    <text> To The Second Underground Entrance</text>
+  </string>
+
+  <string id="st_tc_space_restrictor_to_outskirts_descr">
+    <text> To Outskirts (South)</text>
+  </string>
+
+  <string id="st_outskirts_space_restrictor_to_tc_descr">
+    <text> To The Truck Cemetery (East Roadway)</text>
+  </string>
+
+</string_table>

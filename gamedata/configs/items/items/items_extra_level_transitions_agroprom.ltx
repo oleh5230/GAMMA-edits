@@ -1,0 +1,22 @@
+; Agroprom (Swamps Hill) <-> Yantar (South West)
+[lc_agroprom_north_west_yantar_south_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_agroprom_north_west_yantar_south_west
+pos = -244 ,16.0 , 145
+gvid = 1055
+spot = level_changer_up
+hint = st_agroprom_space_restrictor_to_yantar_descr
+to_pos = -142, 27.7, -354
+to_gvid = 2281
+trigger_radius = 2.5
+
+[lc_yantar_south_west_agroprom_north_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_yantar_south_west_agroprom_north_west
+pos = -142, 27.7, -354
+gvid = 2281
+spot = level_changer_down
+hint = st_yantar_space_restrictor_to_agroprom_descr
+to_pos = -244 ,16.0 , 145
+to_gvid = 1055
+trigger_radius = 3.0

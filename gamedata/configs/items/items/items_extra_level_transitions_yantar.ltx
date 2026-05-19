@@ -1,21 +1,68 @@
 ; Yantar <-> Dead City
 [lc_yantar_west_dead_city_west]:lc_extra_level_transition_base
-lc_extra_level_transition = true					;; mandatory field
-story_id = lc_yantar_west_dead_city_west			;; story_id, without it the item wont be added
-pos = -219.6,6.7,-48.95						;; position of item
-gvid = 2307								;; Gvid of item
-spot = level_changer_up						;; texture to use for spot on the map
-hint = space_restrictor_to_deadcity_desc			;; string id for hint description, defined in xml files
-to_pos = -226,10.01,-181.52					;; position where to teleport actor
-to_gvid = 2318								;; Gvid where to teleport actor
+lc_extra_level_transition = true					
+story_id = lc_yantar_west_dead_city_west			
+pos = -245.77, 21.6, -176.3						
+gvid = 2276								
+spot = level_changer_left_up					
+hint = st_yantar_space_restrictor_to_deadcity_desc	r		
+to_pos = -234.67, 9.6 , -154.35					
+to_gvid = 2419
+trigger_raidus = 1.3								
 
 [lc_dead_city_west_yantar_west]:lc_extra_level_transition_base
-lc_extra_level_transition = true					;; mandatory field
-story_id = lc_yantar_west_dead_city_west			;; story_id, without it the item wont be added
-pos = -234.17,9.86,-190.01						;; position of item
-gvid = 2318								;; Gvid of item
-spot = level_changer_down						;; texture to use for spot on the map
-hint = space_restrictor_to_yantar_desc				;; string id for hint description, defined in xml files
-to_pos = -222.64,7.48,-62.54					;; position where to teleport actor
-dir = 0,60,0								;; actor facing
-to_gvid = 2307								;; Gvid where to teleport actor
+lc_extra_level_transition = true					
+story_id = lc_dead_city_west_yantar_west		
+pos = -234.67 , 9.6 , -154.35						
+gvid = 2419								
+spot = level_changer_down_left						
+hint = st_deadcity_space_restrictor_to_yantar_desc	r		
+to_pos = -245.77, 21.6, -176.3														
+to_gvid = 2276								
+trigger_radius = 1.4
+
+; Yantar <-> Wild Territory
+[lc_yantar_north_rostok_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_yantar_north_rostok_west
+pos = 171.4, 1.88 , 87.3
+gvid = 2213
+spot = level_changer_up_right
+hint = st_yantar_space_restrictor_to_rostok_descr
+to_pos = -288 ,0.004 , 107
+to_gvid = 1958
+trigger_radius = 1.5
+
+[lc_rostok_west_yantar_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_rostok_west_yantar_north
+pos = -288 ,0.004 , 107
+gvid = 1958
+spot = level_changer_down_left
+hint = st_rostok_space_restrictor_to_yantar_descr
+to_pos = 171.4, 1.88 , 87.3
+to_gvid = 2213
+trigger_radius = 1.5
+
+; Yantar <-> Garbage						         
+[lc_yantar_south_garbage_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true					  
+story_id = lc_yantar_south_garbage_west			      
+pos = 100.6,22.7,-344.2					                
+gvid = 2231								       
+spot = level_changer_right_down						 
+hint = st_yantar_space_restrictor_to_garbage_descr		    
+to_pos = -214.6,2.06,57.2					           								        
+to_gvid = 802
+trigger_radius = 2.0		
+
+[lc_garbage_west_yantar_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true					    
+story_id = lc_garbage_west_yantar_south			        
+pos = -214.6,2.06,57.2						          
+gvid = 802								             
+spot = level_changer_left_up						   
+hint = st_garbage_space_restrictor_to_yantar_desc	r		      
+to_pos = 100.6,22.7,-344.2					          
+to_gvid = 2231
+trigger_radius = 1.6		

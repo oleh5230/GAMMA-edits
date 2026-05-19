@@ -1,3 +1,12 @@
+![game_relations]
+; Requirements for each rank increase by an additional multiple of 500 points with each rank.
+; Rookie -> Trainee: 500 (+500), Trainee -> Experienced: 1500 (+1000), Experienced -> Professional: 3000 (+1500) etc.
+; Rank values are set 1 point lower than their target as engine uses upper_bound to determine which text to display in inventory.
+
+rating			= novice, 1999, trainee, 4999, experienced, 9999, professional, 15999, veteran, 23999, expert, 34999, master, 49999, legend
+monster_rating	= weak, 40, normal, 80, strong
+reputation		= terrible, -1999, really_bad, -1499, very_bad, -999, bad, -499, neutral, 499, good, 999, very_good, 1499, really_good, 1999, excellent
+
 ![actor_condition]
 radiation_v             = 0.00001 ; 0.00001
 radiation_health_v		= 0.00000 ; 0.0018
@@ -12,6 +21,9 @@ boost_time                                         = 324
 ![drug_radioprotector]
 eat_alcohol					                       = 0
 boost_time                                         = 324
+
+![antirad_cystamine]
+boost_time                                         = 573
 
 ![drug_sleepingpills]
 cost						                       = 3754
@@ -42,10 +54,10 @@ eat_satiety 				                       = -0.039
 eat_satiety 				                       = -0.017
 
 ![stimpack]
-eat_satiety 				                       = -0.58
+eat_satiety 				                       = -0.058
 
 ![stimpack_army]
-eat_satiety 				                       = -0.71
+eat_satiety 				                       = -0.071
 
 ![stimpack_scientic]
 eat_satiety 				                       = -0.032
@@ -86,6 +98,7 @@ eat_alcohol					                       = 0
 boost_time                                         = 54
 
 ![tetanus]
+boost_time					                       = 31
 eat_alcohol					                       = 0
 
 ![flask]

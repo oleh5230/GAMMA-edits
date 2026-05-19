@@ -1,0 +1,22 @@
+; Wild Territory <-> Army Warehouses
+[lc_rostok_north_warehouse_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_rostok_north_warehouse_west
+pos = -150, 0.05, 181
+gvid = 1838
+spot = level_changer_up
+hint = st_rostok_space_restrictor_to_warehouse_descr
+to_pos = -363, -11.6 , 243
+to_gvid = 2022
+trigger_radius = 3.0
+
+[lc_warehouse_west_rostok_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_warehouse_west_rostok_north
+pos = -363, -11.6 , 243
+gvid = 2022
+spot = level_changer_down
+hint = st_warehouse_space_restrictor_to_rostok_descr
+to_pos = -150, 0.05, 181
+to_gvid = 1838
+trigger_radius = 1.0

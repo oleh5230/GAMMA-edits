@@ -1,0 +1,22 @@
+; Great Swamps (North Doc) <-> Agroprom (South Of Military)
+[lc_marsh_north_agroprom_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_marsh_north_agroprom_south
+pos = -195, 8.28, 532
+gvid = 231
+spot = level_changer_up
+hint = st_marsh_space_restrictor_to_agroprom_descr
+to_pos = -180, 2.86, -328
+to_gvid = 1058
+trigger_radius = 3.0
+
+[lc_agroprom_south_marsh_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_marsh_north_agroprom_south
+pos = -180, 2.86, -328
+gvid = 1058
+spot = level_changer_down
+hint = st_agroprom_space_restrictor_to_marsh_descr
+to_pos = -195, 8.28, 532
+to_gvid = 231
+trigger_radius = 4.0

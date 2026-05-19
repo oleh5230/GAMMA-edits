@@ -1,0 +1,22 @@
+; Red Forest <-> Dead City
+[lc_red_forest_west_dead_city_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_red_forest_west_dead_city_north
+pos = -161, 0.728 , -313
+gvid = 2847
+spot = level_changer_down_left
+hint = st_red_forest_space_restrictor_to_deadcity_descr
+to_pos = 123, -2.54 , 132
+to_gvid = 2423
+trigger_radius = 2.0
+
+[lc_dead_city_north_red_forest_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_dead_city_north_red_forest_west
+pos = 123 , -2.54 , 132
+gvid = 2423
+spot = level_changer_up_right
+hint = st_dead_city_space_restrictor_to_red_forest_descr
+to_pos = -161, 0.72 , -313
+to_gvid = 2847
+trigger_radius = 4.0

@@ -1,0 +1,45 @@
+; Dead City (East Gate) <-> Army Warehouses (East Entrance Furthur back)
+; [lc_dead_city_east_warehouse_west]:lc_extra_level_transition_base
+; lc_extra_level_transition = true
+; story_id = lc_dead_city_east_warehouse_west
+; pos = 173.8, 2.94, 2.15
+; gvid = 2327
+; spot = level_changer_right
+; hint = st_deadcity_space_restrictor_to_warehouse_descr
+; to_pos = -425.3, -13.2, 380
+; to_gvid = 1966
+; trigger_radius = 3.0
+
+; [lc_warehouse_west_dead_city_east]:lc_extra_level_transition_base
+; lc_extra_level_transition = true
+; story_id = lc_warehouse_west_dead_city_east
+; pos = -425.3, -13.2, 380
+; gvid = 1966
+; spot = level_changer_left
+; hint = st_warehouse_space_restrictor_to_deadcity_descr
+; to_pos = 173.8, 2.94, 2.15
+; to_gvid = 2327
+; trigger_radius = 4.5
+				
+; Dead City (Underground Tunnel Pipe) <-> Wild Territory (West Shed)
+[lc_rostok_north_dead_city_east]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_dead_city_south_east_rostok_north
+pos = 162.8, -2.56, -48.6
+gvid = 2390
+spot = level_changer_right_down
+hint = st_deadcity_space_restrictor_to_rostok_descr
+to_pos = -297, -0.002, 144
+to_gvid = 1859
+trigger_radius = 3.0
+
+[lc_dead_city_east_rostok_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true					
+story_id = lc_rostok_north_dead_city_east		
+pos = -297, -0.002, 144						
+gvid = 1859							
+spot = level_changer_left_up						 
+hint = st_rostok_space_restrictor_to_deadcity_descr				
+to_pos = 162.8, -2.56, -48.6												
+to_gvid = 2390
+trigger_radius = 2.0

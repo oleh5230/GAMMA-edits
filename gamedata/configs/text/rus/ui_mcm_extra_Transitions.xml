@@ -1,0 +1,20 @@
+<string_table>
+<string id="ui_mcm_extra_level_transitions_title">
+<text> Переходы</text>
+</string>
+<string id="ui_mcm_menu_extra_level_transitions">
+<text>Переходы</text>
+</string>
+<string id="ui_mcm_extra_level_transitions_enable_time_advance">
+<text>Включить функцию увеличения времени</text>
+</string>
+<string id="ui_mcm_extra_level_transitions_enable_time_advance_desc">
+<text>Время будет увеличиваться при переходе между уровнями.</text>
+</string>
+<string id="ui_mcm_extra_level_transitions_delete_level_transitions">
+<text>Удалить переходы</text>
+</string>
+<string id="ui_mcm_extra_level_transitions_delete_level_transitions_desc">
+<text>Дополнительные переходы между уровнями будут удалены из игры. Эта опция предназначена для безопасного удаления мода</text>
+</string>
+</string_table>

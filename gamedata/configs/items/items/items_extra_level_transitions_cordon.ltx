@@ -1,21 +1,45 @@
-[lc_cordon_south_darkscape_collapsed_tunnel]:lc_extra_level_transition_base
-lc_extra_level_transition = true 								; mandatory field
-story_id = lc_cordon_south_darkscape_collapsed_tunnel			; story_id, without it the item wont be added              
-pos = -59,-30,-477			                                    ; position of item                                      
-gvid = 449			                        					; Gvid of item                                   
-spot = level_changer_right			                            ; texture to use for spot on the map                      
-hint = esc_space_restrictor_to_darkscape_descr			        ; string id for hint description, defined in xml files   
-to_pos = 513.7,-1.5,-420.8			                            ; position where to teleport actor                
-to_gvid = 1119                    					 			; Gvid where to teleport actor
-; dir = 0,60,0								;; actor facing
-; trigger_radius = 1.2 						;; Radius to trigger transition (default is 6)
+; Cordon South East Military Checkpoint <-> Darkscape South Collapsed Tunnel
+[lc_esc_south_darkscape_collapsed_tunnel]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_esc_south_darkscape_collapsed_tunnel
+pos = -58.2, -30, -475
+gvid = 449
+spot = level_changer_right
+hint = st_esc_space_restrictor_to_darkscape_descr
+to_pos = 450, -1.63 , -497
+to_gvid = 1119
+trigger_radius = 3.0
 
-[lc_darkscape_collapsed_tunnel_cordon_south]:lc_extra_level_transition_base
-lc_extra_level_transition = true 								; mandatory field
-story_id = lc_darkscape_collapsed_tunnel_cordon_south
-pos = 520.17,-1.35,-429.54
+[lc_darkscape_collapsed_tunnel_esc_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_darkscape_collapsed_tunnel_esc_south
+pos = 450, -1.63 , -497
 gvid = 1119
-spot = level_changer_down
-hint = ds_space_restrictor_to_escape_descr
-to_pos = -64,-29,-457
+spot = level_changer_down_left
+hint = st_darkscape_space_restrictor_to_esc_descr
+to_pos = -58.2, -30, -475
 to_gvid = 449
+trigger_radius = 2.0
+
+; Cordon South West Checkpoint <-> Great Swamps (Tree By East River)
+[lc_esc_south_marsh_east]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_esc_south_east_marsh_east
+pos = -238 , -20.0 , -469
+gvid = 362
+spot = level_changer_left_up
+hint = st_esc_space_restrictor_to_marsh_descr
+to_pos = 535, 1.65 , 23.8
+to_gvid = 250
+trigger_radius = 3.0
+
+[lc_marsh_east_esc_south]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_marsh_east_esc_south
+pos = 535, 1.65 , 23.8
+gvid = 250
+spot = level_changer_right_down
+hint = st_marsh_space_restrictor_to_esc_descr
+to_pos = -238 , -20.0 , -469
+to_gvid = 362
+trigger_radius = 2.0

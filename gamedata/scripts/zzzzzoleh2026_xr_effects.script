@@ -18,3 +18,11 @@ xr_efefcts.reward_stash = function(actor,npc,p)
 		treasure_manager.create_random_stash(nil,nil,bonus, true)
 	end
 end
+
+xr_efefcts.reward_random_item = function(actor,npc,p)
+	return false end
+	-- if (#p > 0) then
+	-- 	local section_d = p[math.random(#p)]
+	-- 	reward_item(actor,npc,{section_d})
+	-- end
+-- end

@@ -54,7 +54,7 @@ function actor_on_before_hit(shit)
 
 	-- Final modifier
 	local hit_modifier = hit_additional >= 0 and 1 + hit_additional or 1 / (1 - hit_additional)
-	local actor_hit_power = hit_power / hit_modifier 
+	local actor_hit_power = hit_power / hit_modifier / 2.28
 
 	-- printf("rad hit %s", actor_hit_power)
 	actor:change_radiation(actor_hit_power)

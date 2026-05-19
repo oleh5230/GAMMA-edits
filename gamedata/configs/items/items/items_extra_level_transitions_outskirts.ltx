@@ -1,0 +1,22 @@
+; Outskirts North <-> Zaton Ranger Station?
+[lc_outskirts_north_zaton_west]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_outskirts_north_zaton_west
+pos = -22.4, -0.50, 376
+gvid = 4907
+spot = level_changer_left_up
+hint = st_outskirts_space_restrictor_to_zaton_descr
+to_pos = 475, 35.0, 48.9
+to_gvid = 4433
+trigger_radius = 2.0
+
+[lc_zaton_west_outskirts_north]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_zaton_west_outskirts_north
+pos = 475, 35.0, 48.9
+gvid = 4433
+spot = level_changer_right 
+hint = st_zaton_space_restrictor_to_outskirts_descr
+to_pos = -22.4, -0.50, 376
+to_gvid = 4907
+trigger_radius = 2.0

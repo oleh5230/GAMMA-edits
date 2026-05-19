@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+<string id="st_agroprom_space_restrictor_to_yantar_descr">
+    <text>�� ������ (���-�������� ����)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_agroprom_descr">
+    <text>�� �������� (������-�������� �������� ����)</text>
+  </string>
+
+  <string id="st_esc_space_restrictor_to_darkscape_descr">
+    <text>� ������ ������ (����� �������)</text>
+  </string>
+
+  <string id="st_darkscape_space_restrictor_to_esc_descr">
+    <text>�� ������ (���-�����)</text>
+  </string>
+
+  <string id="st_esc_space_restrictor_to_marsh_descr">
+    <text> �� ������ (������)</text>
+  </string>
+
+  <string id="st_marsh_space_restrictor_to_esc_descr">
+    <text> �� ������ (���-�����)</text>
+  </string>
+
+   <string id="st_deadcity_space_restrictor_to_rostok_descr">
+    <text> �� ����� ���������� (������-�����)</text>
+  </string>
+
+   <string id="st_rostok_space_restrictor_to_deadcity_descr">
+    <text> � ������� ����� (��������� ������)</text>
+  </string>
+
+  <string id="st_limansk_space_restrictor_to_jupiter_descr">
+    <text> �� ������ (������ ��������)</text>
+  </string>
+
+  <string id="st_jupiter_space_restrictor_to_limansk_descr">
+    <text> � ������� (���� �� �������)</text>
+  </string>
+
+  <string id="st_limansk_south_east_space_restrictor_to_jupiter_south_west_descr">
+    <text> �� ������ (���-�����) </text>
+  </string>
+
+<string id="st_jupiter_south_west_space_restrictor_to_limansk_south_east_descr">
+    <text> � ������� (�� ���-������ ������)</text>
+  </string>
+
+    <string id="st_marsh_space_restrictor_to_agroprom_descr">
+    <text> �� �������� (���-�����)</text>
+  </string>
+
+  <string id="st_agroprom_space_restrictor_to_marsh_descr">
+    <text> �� ������ (������ �����)</text>
+  </string>
+
+<string id="st_outskirts_space_restrictor_to_zaton_descr">
+    <text> �� �����</text>
+  </string>
+
+<string id="st_zaton_space_restrictor_to_outskirts_descr">
+    <text> В Затон (станция рейнджеров)</text>
+  </string>
+
+<string id="st_red_forest_space_restrictor_to_deadcity_descr">
+    <text> � ������� ����� (������-������)</text>
+  </string>
+
+<string id="st_dead_city_space_restrictor_to_red_forest_descr">
+    <text> � ����� � ����� ���� (������� ������)</text>
+  </string>
+
+<string id="st_warehouse_space_restrictor_to_red_forest_descr">
+    <text> � ����� ��� (��)</text>
+  </string>
+
+<string id="st_red_forest_space_restrictor_to_warehouse_descr">
+    <text> �� ��������� ������ (�����)</text>
+  </string>
+
+<string id="st_rostok_space_restrictor_to_warehouse_descr">
+    <text>�� ��������� ������ (������� ����������)</text>
+  </string>
+
+  <string id="st_warehouse_space_restrictor_to_rostok_descr">
+    <text> �� ����� ���������� (������-������)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_deadcity_descr">
+    <text> � ������� ����� (�����)</text>
+  </string>
+
+  <string id="st_deadcity_space_restrictor_to_yantar_descr">
+    <text> �� ������ (�����)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_rostok_descr">
+    <text> �� ����� ���������� (�����)</text>
+  </string>
+
+  <string id="st_rostok_space_restrictor_to_yantar_descr">
+    <text> �� ������ (������-��������� �������)</text>
+  </string>
+
+  <string id="st_yantar_space_restrictor_to_garbage_descr">
+    <text> �� ������ (�����)</text>
+  </string>
+
+  <string id="st_garbage_space_restrictor_to_yantar_descr">
+    <text> �� ������ (��)</text>
+  </string>
+
+  <string id="st_deadcity_space_restrictor_to_warehouse_descr">
+    <text> К армейским складам (восточный вход, дальше назад)</text>
+  </string>
+
+  <string id="st_warehouse_space_restrictor_to_deadcity_descr">
+    <text> В Мертвый Город (Восточные Ворота)</text>
+  </string>
+
+  <string id="st_jupiter_underground_space_restrictor_to_jupiter_descr">
+    <text> Ко второму выходу Юпитера</text>
+  </string>
+
+ <string id="st_jupiter_space_restrictor_to_jupiter_underground_descr">
+    <text> Ко второму подземному входу</text>
+  </string>
+
+ <string id="st_tc_space_restrictor_to_outskirts_descr">
+    <text> На окраину (юг)</text>
+  </string>
+
+  <string id="st_outskirts_space_restrictor_to_tc_descr">
+    <text> На кладбище грузовиков (Восточная дорога)</text>
+  </string>
+
+</string_table>

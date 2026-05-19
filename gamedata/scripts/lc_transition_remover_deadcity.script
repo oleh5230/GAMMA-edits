@@ -1,0 +1,16 @@
+local to_del = {
+ ["cit_space_restrictor_to_military"] = true,
+}
+
+function actor_on_first_update()
+  for i = 1, 65534 do
+    local se_obj = alife_object(i)
+    if se_obj and se_obj.name and se_obj:name() and to_del[se_obj:name()] then
+      alife_release(se_obj)
+    end
+  end
+end
+
+function on_game_start()
+  --RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

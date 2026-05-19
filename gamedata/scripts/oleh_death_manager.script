@@ -5,7 +5,7 @@ death_manager.keep_item = function(npc, item) -- The function is called for each
 	end 
 	kind = ini_sys:r_string_ex(item:section(),"kind")
 	if kind and kind == "i_mutant_cooked" then
-		alife_release(se_item)
+		alife_release(item)
 		return
 	end
 	keep_item(npc, item)

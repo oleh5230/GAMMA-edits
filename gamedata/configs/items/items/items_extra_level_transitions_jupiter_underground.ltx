@@ -1,0 +1,22 @@
+; Jupiter Underground Exit 2 <-> Jupiter Entrance 2
+[lc_jupiter_underground_jupiter]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_jupiter_underground_north_jupiter_north
+pos = -47.0, 8.00, 454.8 
+gvid = 4826
+spot = level_changer_up
+hint = st_jupiter_underground_space_restrictor_to_jupiter_descr
+to_pos = 414.9, 4.75, -137.1
+to_gvid = 4823
+trigger_radius = 4.0
+
+[lc_jupiter_jupiter_underground]:lc_extra_level_transition_base
+lc_extra_level_transition = true
+story_id = lc_jupiter_north_jupiter_underground_north
+pos = 414.9, 4.75, -137.1
+gvid = 4823
+spot = level_changer_down
+hint = st_jupiter_space_restrictor_to_jupiter_underground_descr
+to_pos = -47.0, 8.00, 454.8 
+to_gvid = 4826
+trigger_radius = 4.5
