@@ -1,0 +1,56 @@
+-- plays scope zoom adjustment sound effect
+-- oleh5230, 20.05.26
+
+def_sounds = {"scope\\scope_zoom_wp_1","scope\\scope_zoom_wp_2","scope\\scope_zoom_wp_3","scope\\scope_zoom_wp_4"}
+
+local enabled = true
+local volume = 0.5
+
+local prev_zoom = get_console_cmd(2, "fov") or 80
+function on_mouse_wheel(scroll_dir, flags)
+    if not enabled then return end
+    if not axr_main.weapon_is_zoomed or not actor_menu.is_hud_free() then return end
+
+	local actor = db.actor
+	local itm = actor and actor:active_item()
+    if not itm then return end
+	if not IsWeapon(itm) then return end
+
+    local dynamic = ini_sys:r_string_ex(itm:section(), "scope_dynamic_zoom")
+	local cwpn = itm:cast_Weapon()
+	local zoom = cwpn:GetZoomFactor()
+    local sounds = get_scope_sounds(itm)
+
+    if dynamic and dynamic == "on"
+    and zoom and (zoom ~= prev_zoom) then
+        local snd_obj = sound_object(sounds[math.random(#sounds)])
+		snd_obj:play(actor, 0, sound_object.s2d)
+        snd_obj.volume = volume
+	end
+	prev_zoom = zoom
+end
+
+function get_scope_sounds(wpn)
+    local sec = wpn and wpn:section()
+    local sounds = sec and ini_sys:r_string_ex(sec, "snd_zoom")
+    local _sounds = sounds and str_explode(sounds, ",")
+
+    return _sounds or def_sounds
+end
+
+function load_mcm_options()
+    if ui_mcm and oleh_sounds_mcm then
+        enabled = ui_mcm.get("oleh_sounds/weapons/enabled_scope_zoom")
+        volume  = ui_mcm.get("oleh_sounds/weapons/volume_scope_zoom") or 0.5
+    -- old MCM compatibility
+    elseif ui_mcm and grok_casings_sounds_mcm then
+        enabled = ui_mcm.get("grok_casings_sounds/enabled_scope_zoom")
+        volume  = ui_mcm.get("grok_casings_sounds/volume_scope_zoom") or 0.5
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback("on_mouse_wheel", on_mouse_wheel)
+    RegisterScriptCallback("on_option_change", load_mcm_options)
+    load_mcm_options()
+end

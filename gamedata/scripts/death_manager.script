@@ -794,7 +794,31 @@ function try_spawn_sin_artefacts(npc)
 	end
 end
 
+-- Postpone on next n tick
+local nextTick = _G.nextTick or function(f, n)
+	n = floor(max(n or 1, 1))
+	AddUniqueCall(function()
+		if n == 1 then
+			return f()
+		else
+			n = n - 1
+			return false
+		end
+	end)
+end
+
 function set_weapon_drop_condition(npc,itm)
+	printf("set_weapon_drop_condition %s %s | %s %s", npc:name(), npc:id(), itm:section(), itm:id())
+	local check = function()
+		printf("set_weapon_drop_condition check %s %s | %s %s", itm:parent() and itm:parent():name(), itm:parent() and itm:parent():id(), itm:section(), itm:id())
+		if not itm:parent() then
+			printf("!set_weapon_drop_condition transfer")
+			npc:transfer_item(itm, npc)
+			db.actor:give_game_news("", "Dropped NPC weapon transfered", "ui_inGame2_D_Ohotnik_na_mutantov", 0, 5000, 0)
+			return true
+		end
+	end
+	nextTick(check)
 
 	local rank = ranks.get_obj_rank_name(npc)
 	local condition = 10

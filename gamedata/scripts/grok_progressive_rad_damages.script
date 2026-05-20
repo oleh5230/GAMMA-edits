@@ -75,7 +75,7 @@ function actor_on_update()
     if tg then
         if time_global() > tg+step then
 			local actor_rad = db.actor.radiation
-            printf("%s %s", actor_rad, math.random())
+            --printf("%s %s", actor_rad, math.random())
             tg = nil
             -- if actor_rad > 0 then
             --     local base_damage_value = 0.0024
