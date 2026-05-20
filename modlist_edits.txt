@@ -16,5 +16,9 @@ Enable:
 - Fluid draw
 - Glowstick shadowcast
 - SAR
+- Rotten Line
+- LUT
+- Ground textures
+- GFY?
 - Alife+
 - Ammo check?
