@@ -26,3 +26,11 @@ xr_effects.reward_random_item = function(actor,npc,p)
 	-- 	reward_item(actor,npc,{section_d})
 	-- end
 -- end
+
+xr_conditions.actor_goodwill_ge = function(actor,npc,p)
+	return true
+	-- if (p[1] and p[2]) then
+	-- 	return db.actor and relation_registry.community_goodwill(p[1], AC_ID) >= tonumber(p[2])
+	-- end
+	-- return false
+end

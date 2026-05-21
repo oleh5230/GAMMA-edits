@@ -1,8 +1,16 @@
 function on_get_item_cost(kind, obj, profile, vanilla_cost, ret)
 	if not obj and vanilla_cost then return end
 	local itm_kind = SYS_GetParam(0, obj:section(), "kind")
-	if itm_kind and (itm_kind == "i_food" or itm_kind == "i_drink") then ret.new_cost = vanilla_cost * 3 end
+	if not itm_kind then return end
+	if cost_per_kind[itm_kind] then ret.new_cost = vanilla_cost * cost_per_kind[itm_kind] end
 end
+
+cost_per_kind = {
+	["i_food"] 		= 3,
+	["i_drink"] 	= 3,
+	["i_deivce"]	= 2,
+	["w_melee"]		= 2,
+}
 
 function on_game_start()
 	RegisterScriptCallback("on_get_item_cost", on_get_item_cost)

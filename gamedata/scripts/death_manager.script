@@ -499,6 +499,11 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 		return
 	end
 
+	if kind and kind == "i_mutant_cooked" or kind == "i_upgrade" then
+		alife_release(se_item)
+		return
+	end
+
 	-- oleh5230
 	-- Release delivery packages and detectors
 	if string.find(section,"quest_package") then
@@ -814,9 +819,8 @@ function set_weapon_drop_condition(npc,itm)
 		if not itm:parent() then
 			printf("!set_weapon_drop_condition transfer")
 			npc:transfer_item(itm, npc)
-			db.actor:give_game_news("", "Dropped NPC weapon transfered", "ui_inGame2_D_Ohotnik_na_mutantov", 0, 5000, 0)
-			return true
 		end
+		return true
 	end
 	nextTick(check)
 
