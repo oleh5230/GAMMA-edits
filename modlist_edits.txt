@@ -22,3 +22,4 @@ Enable:
 - GFY?
 - Alife+
 - Ammo check?
+https://www.moddb.com/mods/stalker-anomaly/addons/xrmpe-npc-animations-anomaly-gamma-vol1
