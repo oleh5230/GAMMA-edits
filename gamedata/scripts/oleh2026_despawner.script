@@ -4,6 +4,8 @@ local to_del = {
  ["baraholka_trader_night"] = true,
  ["esc_main_base_trader_mlr"] = true,
  ["esc_smart_terrain_5_7_loner_mechanic_stalker"] = true,
+ ["trucks_cemetery_bandit_trader"] = true,
+ ["trucks_cemetery_bandit_mechanic"] = true,
 }
 
 function npc_on_net_spawn(npc)

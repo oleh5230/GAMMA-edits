@@ -7,9 +7,13 @@ end
 
 cost_per_kind = {
 	["i_food"] 		= 3,
+	--["i_repair"]	= 3,
+	--["i_tool"]	    = 3,
 	["i_drink"] 	= 3,
-	["i_deivce"]	= 2,
+	["i_device"]	= 3,
 	["w_melee"]		= 2,
+	["w_ammo"]		= 2,
+	["i_misc"]		= 2,
 }
 
 function on_game_start()

@@ -540,7 +540,7 @@ function set_random_stash(no_spot, hint, bonus_items, id, dbg)
 		--local factor = stash_rare.start_chance * (cnt / stash_rare.task_num)
 		--if (cnt >= stash_rare.task_num) and (math.random(100) < factor) then
 
-		if (math.random(100) < 15) then
+		if (math.random(100) < 33) then
 		
 			-- Shift to next toolkit
 			local last_index = load_var(db.actor, "toolkit_reward_last")

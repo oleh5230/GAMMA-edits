@@ -1,36 +1,10 @@
 xr_effects.reward_stash = function(actor,npc,p)
-	if false and (p and p[1] ~= "true") or ((math.random(1,100)/100) <= 0.5) then
-		local bonus
-		
-		if ((math.random(1,100)/100) <= 0.5) then
-			local stash_bonus = treasure_manager.stash_bonus
-			if stash_bonus and (#stash_bonus > 0) then
-				bonus = {stash_bonus[math.random(#stash_bonus)]}
-			end
-		end
-		
-		--[[
-		if ((math.random(1,100)/100) <= 0.1) then
-			local t = {"itm_basickit","itm_advancedkit","itm_expertkit","itm_drugkit","itm_ammokit"}
-			bonus = {t[math.random(#t)]}
-		end
-		--]]
-		treasure_manager.create_random_stash(nil,nil,bonus, true)
-	end
 end
 
 xr_effects.reward_random_item = function(actor,npc,p)
-	return false end
-	-- if (#p > 0) then
-	-- 	local section_d = p[math.random(#p)]
-	-- 	reward_item(actor,npc,{section_d})
-	-- end
--- end
+	return false
+end
 
 xr_conditions.actor_goodwill_ge = function(actor,npc,p)
 	return true
-	-- if (p[1] and p[2]) then
-	-- 	return db.actor and relation_registry.community_goodwill(p[1], AC_ID) >= tonumber(p[2])
-	-- end
-	-- return false
 end
