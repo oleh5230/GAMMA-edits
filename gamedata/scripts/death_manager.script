@@ -391,7 +391,13 @@ local ammo_gl_bad = {
 function keep_item(npc, item) -- The function is called for each item, and decide if this item should stay or get released.
 	if not (item) then
 		return 
-	end 
+	end
+
+	local kind = SYS_GetParam(0, item:section(), "kind", "")
+	if kind == "i_mutant_cooked" or kind == "i_upgrade" then
+		alife_release(se_item)
+		return
+	end
 
 	-- Keep whitelisted items from death manager
 	local section = item:section()
@@ -495,11 +501,6 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 	end
 
 	if ammo_gl_bad[section] then
-		alife_release(se_item)
-		return
-	end
-
-	if kind and kind == "i_mutant_cooked" or kind == "i_upgrade" then
 		alife_release(se_item)
 		return
 	end
@@ -1052,7 +1053,7 @@ function spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition
 	local outfit_id
 	if outfit_section and ini_sys:section_exist(outfit_section) and  validate_drop(outfit_section) then
 		local condition = math.random(min_cond, max_cond) / 100
-		if math.random(100) < 3 then
+		if math.random(100) < 5 then
 			condition = math.random(65, 70)
 		end
 		outfit_id = spawn_with_condition(npc, outfit_section, condition)
@@ -1062,7 +1063,7 @@ function spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition
 	local helmet_id
 	if helmet_section and ini_sys:section_exist(helmet_section) and  validate_drop(helmet_section) then
 		local condition = math.random(min_cond, max_cond) / 100
-		if math.random(100) < 3 then
+		if math.random(100) < 5 then
 			condition = math.random(65, 70)
 		end
 		helmet_id = spawn_with_condition(npc, helmet_section, condition)
