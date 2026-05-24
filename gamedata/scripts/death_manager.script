@@ -394,7 +394,7 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 	end
 
 	local kind = SYS_GetParam(0, item:section(), "kind", "")
-	if kind == "i_mutant_cooked" or kind == "i_upgrade" then
+	if kind == "i_mutant_cooked" or kind == "i_mutant_raw" or kind == "i_mutant_part" or kind == "i_mutant_belt" or kind == "i_upgrade" then
 		alife_release(se_item)
 		return
 	end
@@ -674,7 +674,6 @@ function try_spawn_ammo(npc)
 				end
 			-- end
 			-- spawn grenade ammo if there is launcher attached
-			printf("!%s %s", (ini_sys:r_float_ex(itm:section(),"grenade_launcher_status") > 0), itm:weapon_is_grenadelauncher())
 			if (ini_sys:r_float_ex(itm:section(),"grenade_launcher_status") > 0) and itm:weapon_is_grenadelauncher() then
 				ammo_class = parse_list(ini_sys,itm:section(),"grenade_class")
 				printf("!%s", ammo_class[1])

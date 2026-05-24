@@ -13,6 +13,9 @@ local default_chances = {
 function on_mcm_load()
     op = { id= "outfitdrop",sh=true ,gr={
         {id = "helmet_light_chance", type = "track", val = 2, min=0,max=100,step=1, def = 70},
+        {id = "helmet_medium_chance", type = "track", val = 2, min=0,max=100,step=1, def = 50},
+        {id = "helmet_heavy_chance", type = "track", val = 2, min=0,max=100,step=1, def = 30},
+        {id = "helmet_exo_chance", type = "track", val = 2, min=0,max=100,step=1, def = 10},
         {id = "helmet_chance", type = "track", val = 2, min=0,max=100,step=1, def = 30},
         {id = "outfit_light_chance", type = "track", val = 2, min=0,max=100,step=1, def = 70},
         {id = "outfit_medium_chance", type = "track", val = 2, min=0,max=100,step=1, def = 50},
@@ -55,7 +58,7 @@ function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, 
 	local outfit_id
 	if outfit_section and ini_sys:section_exist(outfit_section)  then
         local condition = rand_condition and (math.random(75,85)/100) or death_manager.get_condition_by_rank(npc_rank, coef)
-        if math.random(100) < 3 then condition = (math.random(65,70)/100) end
+        if math.random(100) < 5 then condition = (math.random(65,70)/100) end
         if death_manager.validate_drop(outfit_section) then
             outfit_id = death_manager.spawn_with_condition(npc, outfit_section, condition)
         else
@@ -68,7 +71,7 @@ function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, 
 	local helmet_id
 	if helmet_section and ini_sys:section_exist(helmet_section) and  death_manager.validate_drop(helmet_section) then
 		local condition = rand_condition and (math.random(75,85)/100) or death_manager.get_condition_by_rank(npc_rank, coef)
-        if math.random(100) < 3 then condition = (math.random(65,70)/100) end
+        if math.random(100) < 5 then condition = (math.random(65,70)/100) end
 		helmet_id = death_manager.spawn_with_condition(npc, helmet_section, condition)
 	end
 

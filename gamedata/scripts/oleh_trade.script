@@ -11,6 +11,7 @@ cost_per_kind = {
 	--["i_tool"]	    = 3,
 	["i_drink"] 	= 3,
 	["i_device"]	= 3,
+	["i_medical"] 	= 2,
 	["w_melee"]		= 2,
 	["w_ammo"]		= 2,
 	["i_misc"]		= 2,
