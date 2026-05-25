@@ -393,12 +393,6 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 		return 
 	end
 
-	local kind = SYS_GetParam(0, item:section(), "kind", "")
-	if kind == "i_mutant_cooked" or kind == "i_mutant_raw" or kind == "i_mutant_part" or kind == "i_mutant_belt" or kind == "i_upgrade" then
-		alife_release(se_item)
-		return
-	end
-
 	-- Keep whitelisted items from death manager
 	local section = item:section()
 	local item_id = item:id()
@@ -487,6 +481,12 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 	
 	-- Release grenades (alot of them are in npc possission)
 	if IsItem("grenade_ammo",section) then
+		alife_release(se_item)
+		return
+	end
+
+	local kind = SYS_GetParam(0, item:section(), "kind", "")
+	if kind == "i_mutant_cooked" or kind == "i_mutant_raw" or kind == "i_mutant_part" or kind == "i_mutant_belt" or kind == "i_upgrade" then
 		alife_release(se_item)
 		return
 	end
