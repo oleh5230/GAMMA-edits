@@ -67,11 +67,11 @@ function weapon_eval_parts(wpn)
 		
 		if wpn:condition() > 0.9 then
 			print_dbg("Short circuiting")
-			parts_data[part] = math.random(90, 99)
-		elseif math.random(100) < final_chance then
-			parts_data[part] = math.random(90, 99) --oleh
+			parts_data[part] = math.random(70, 80)
+		elseif math.random(100) < 5 then
+			parts_data[part] = math.random(70, 80) --oleh
 		else
-			parts_data[part] = math.random(90, 99)
+			parts_data[part] = math.random(10, 59)
 		end
     end
 	se_save_var( wpn:id(), wpn:name(), "parts", parts_data )

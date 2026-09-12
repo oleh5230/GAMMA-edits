@@ -676,7 +676,7 @@ function try_spawn_ammo(npc)
 			-- spawn grenade ammo if there is launcher attached
 			if (ini_sys:r_float_ex(itm:section(),"grenade_launcher_status") > 0) and itm:weapon_is_grenadelauncher() then
 				ammo_class = parse_list(ini_sys,itm:section(),"grenade_class")
-				printf("!%s", ammo_class[1])
+				-- printf("!%s", ammo_class[1])
 				if ammo_class[1] then
 					--number = math.random(ui_mcm.get('dph_loot_cond/ammo/min_gl_ammo'), ui_mcm.get('dph_loot_cond/ammo/max_gl_ammo'))
 					alife_create_item(ammo_class[1], npc)
@@ -813,11 +813,11 @@ local nextTick = _G.nextTick or function(f, n)
 end
 
 function set_weapon_drop_condition(npc,itm)
-	printf("set_weapon_drop_condition %s %s | %s %s", npc:name(), npc:id(), itm:section(), itm:id())
+	--printf("set_weapon_drop_condition %s %s | %s %s", npc:name(), npc:id(), itm:section(), itm:id())
 	local check = function()
-		printf("set_weapon_drop_condition check %s %s | %s %s", itm:parent() and itm:parent():name(), itm:parent() and itm:parent():id(), itm:section(), itm:id())
+		--printf("set_weapon_drop_condition check %s %s | %s %s", itm:parent() and itm:parent():name(), itm:parent() and itm:parent():id(), itm:section(), itm:id())
 		if not itm:parent() then
-			printf("!set_weapon_drop_condition transfer")
+			--printf("!set_weapon_drop_condition transfer")
 			npc:transfer_item(itm, npc)
 		end
 		return true
@@ -1053,7 +1053,7 @@ function spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition
 	if outfit_section and ini_sys:section_exist(outfit_section) and  validate_drop(outfit_section) then
 		local condition = math.random(min_cond, max_cond) / 100
 		if math.random(100) < 5 then
-			condition = math.random(65, 70)
+			condition = math.random(70, 90)
 		end
 		outfit_id = spawn_with_condition(npc, outfit_section, condition)
 	end
@@ -1063,7 +1063,7 @@ function spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition
 	if helmet_section and ini_sys:section_exist(helmet_section) and  validate_drop(helmet_section) then
 		local condition = math.random(min_cond, max_cond) / 100
 		if math.random(100) < 5 then
-			condition = math.random(65, 70)
+			condition = math.random(70, 90)
 		end
 		helmet_id = spawn_with_condition(npc, helmet_section, condition)
 	end

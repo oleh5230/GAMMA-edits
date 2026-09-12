@@ -52,8 +52,9 @@ local function actor_in_field(s_hit)
 	end
 end
 
-step = 0.05
+step = 0.01
 gaining_rads = false
+local snd_obj
 local tg, tg2
 function actor_on_update()
 	if not tg then
@@ -66,7 +67,8 @@ function actor_on_update()
 
 	if gaining_rads and time_global() > (tg + (step / power)) then
 		tg = nil
-		utils_obj.play_sound("detectors\\geiger-0" .. math.random(9))
+		snd_obj = sound_object("detectors\\geiger-0" .. math.random(9))
+		snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1, 1)
 	end
 
 	if time_global() > (tg2 + 500) then
@@ -89,9 +91,9 @@ local function make_some_noise()
 end
 
 function on_game_start()
-	RegisterScriptCallback("actor_on_before_hit", actor_in_field)
+	--RegisterScriptCallback("actor_on_before_hit", actor_in_field)
 	--RegisterScriptCallback("actor_on_update", make_some_noise)
-	RegisterScriptCallback("actor_on_update", actor_on_update)
+	--RegisterScriptCallback("actor_on_update", actor_on_update)
 	
 	device_geiger = ini_file("items\\settings\\devices.ltx"):r_sec_ex("settings","geiger","detector_geiger")
 end

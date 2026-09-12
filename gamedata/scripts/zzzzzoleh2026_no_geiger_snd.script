@@ -1,5 +1,4 @@
 
-local rad_removed
 actor_effects.Update_Rad = function(actor)
 	-- if (not opt.enable_radiation_effect) then
 	-- 	if (not rad_removed) then
