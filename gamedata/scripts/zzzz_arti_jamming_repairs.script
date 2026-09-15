@@ -58,6 +58,7 @@ function weapon_eval_parts(wpn)
 	parts = str_explode(parts,",")
 	local base_chance = tonumber(get_config("newdropschance")) or 50
 	local adjusted = base_chance * wpn:condition()
+	local roll = math.random(100)
 	local parts_data = {}
 	parts_data[sec] = math.ceil(wpn:condition() * 100)
 	for i=1,#parts do
@@ -68,7 +69,7 @@ function weapon_eval_parts(wpn)
 		if wpn:condition() > 0.9 then
 			print_dbg("Short circuiting")
 			parts_data[part] = math.random(70, 80)
-		elseif math.random(100) < 5 then
+		elseif roll < 5 then
 			parts_data[part] = math.random(70, 80) --oleh
 		else
 			parts_data[part] = math.random(10, 59)
